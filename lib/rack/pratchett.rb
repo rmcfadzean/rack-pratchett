@@ -5,9 +5,9 @@ module Rack
     end
 
     def call(env)
-      status, headers, body = @app.call(env)
-      headers['X-Clacks-Overhead'] = 'GNU Terry Pratchett'
-      [status, headers, body]
+      result = @app.call(env)
+      result[1]['X-Clacks-Overhead'.freeze] = 'GNU Terry Pratchett'.freeze
+      result
     end
   end
 end
